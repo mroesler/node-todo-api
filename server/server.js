@@ -9,7 +9,7 @@ var app = express();
 app.use(bodyParser.json());
 
 app.post('/todos', (req, res) => {
-    console.log(req.body);
+    console.log(new Date() + ' - [POST] /todos')
     var todo = new Todo({
         text: req.body.text
     });
@@ -20,6 +20,18 @@ app.post('/todos', (req, res) => {
     })
     .catch((error) => {
         res.status(400).send(error);
+    });
+});
+
+app.get('/todos', (req, res) => {
+    console.log(new Date() + ' - [GET] /todos');
+    Todo
+    .find()
+    .then((todos) => {
+        res.send({todos});
+    })
+    .catch((error) => {
+        res.status(400).send(error)
     });
 });
 
