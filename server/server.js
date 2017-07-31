@@ -31,7 +31,7 @@ app.get('/todos', (req, res) => {
         res.send({todos});
     })
     .catch((error) => {
-        res.status(400).send(error)
+        res.status(400).send(error);
     });
 });
 
